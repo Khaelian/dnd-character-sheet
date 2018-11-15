@@ -62,11 +62,9 @@ class Character extends Component {
 
     if (redirect) return <Redirect to="/" />
     if (loading) {
-      return (
-        <PageTitle title="Loading" />
-      )
+      return <PageTitle title="Loading" />
     }
-    console.log(data)
+
     return (
       <div>
         <PageTitle title={data.name} />
