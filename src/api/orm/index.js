@@ -1,6 +1,6 @@
 import {createConnection, getConnection as nativeGetConnection} from 'typeorm'
-import fs from 'fs'
-import path from 'path'
+// import fs from 'fs'
+// import path from 'path'
 
 import Character from './Entities/Character'
 
@@ -35,7 +35,7 @@ export const connectToDb = () => {
   // const entities = fs.readdirSync(entityDirectory)
   //   .filter((fileName) => /.+\.js/i.test(fileName))
   //   .map((fileName) => require(path.join(entityDirectory, fileName)))
-
+  console.log('Configuring DB Connection')
   createConnection({
     type: DB_DRIVER,
     host: DB_HOST,
