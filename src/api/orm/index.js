@@ -28,6 +28,7 @@ export const connectToDb = () => {
     DB_VOLUME,
     DB_USERNAME,
     DB_PASSWORD,
+    APP_ENV,
   } = process.env
 
   // const entityDirectory = path.join(__dirname, './Entities')
@@ -35,7 +36,9 @@ export const connectToDb = () => {
   // const entities = fs.readdirSync(entityDirectory)
   //   .filter((fileName) => /.+\.js/i.test(fileName))
   //   .map((fileName) => require(path.join(entityDirectory, fileName)))
-  
+
+  const isLocal = (APP_ENV === 'local')
+
   console.log('Configuring DB Connection')
   createConnection({
     type: DB_DRIVER,
@@ -48,8 +51,8 @@ export const connectToDb = () => {
       Character,
     ],
     // bad stuff for production
-    dropSchema: true,
-    synchronize: true,
+    dropSchema: isLocal,
+    synchronize: isLocal,
     logging: true,
   }).then(() => {
     process.env.dbAvailable = true
