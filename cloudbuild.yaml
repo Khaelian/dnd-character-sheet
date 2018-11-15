@@ -1,0 +1,10 @@
+steps:
+# get dependencies
+- name: 'node:alpine'
+  args: ['yarn']
+# build
+- name: 'node:alpine'
+  args: ['yarn', 'build']
+# deploy to google app engine
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy']

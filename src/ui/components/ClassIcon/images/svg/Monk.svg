@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.0"
+   width="24"
+   height="24"
+   viewBox="0 0 24 24"
+   preserveAspectRatio="xMidYMid meet"
+   id="svg10"
+   sodipodi:docname="Monk.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+  <defs
+     id="defs14" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1920"
+     inkscape:window-height="1057"
+     id="namedview12"
+     showgrid="false"
+     units="px"
+     inkscape:zoom="10.322301"
+     inkscape:cx="18.964161"
+     inkscape:cy="12.755784"
+     inkscape:window-x="3832"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg10" />
+  <metadata
+     id="metadata2">
+Created by potrace 1.15, written by Peter Selinger 2001-2017
+<rdf:RDF>
+  <cc:Work
+     rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type
+       rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+    <dc:title></dc:title>
+  </cc:Work>
+</rdf:RDF>
+</metadata>
+  <g
+     transform="matrix(0.00350724,0,0,-0.00350719,4.6558352,25.795681)"
+     id="g8"
+     style="fill:#000000;stroke:none">
+    <path
+       d="m 2205,7337 -190,-19 -65,-44 c -36,-24 -77,-54 -91,-67 l -26,-22 13,-425 c 18,-616 21,-545 -24,-570 -21,-12 -50,-36 -63,-53 l -25,-32 27,-190 c 16,-104 28,-210 29,-235 v -45 l -276,-257 -277,-258 h -53 -54 v 53 c 0,46 7,62 53,134 28,45 121,163 206,263 l 153,182 -32,156 c -17,86 -34,159 -36,161 -6,7 -201,-31 -592,-115 -189,-41 -348,-74 -352,-74 -4,0 -27,-45 -50,-100 l -43,-99 17,-518 c 10,-285 21,-565 24,-623 l 7,-105 235,-224 c 129,-123 292,-269 363,-324 l 127,-101 v -71 c 0,-38 -7,-392 -15,-785 -8,-393 -19,-974 -25,-1291 l -11,-577 61,-93 62,-94 146,-58 c 81,-32 289,-114 462,-181 l 315,-124 150,7 151,6 374,214 c 206,118 383,221 392,229 10,8 44,60 78,116 46,79 60,111 60,142 0,22 -36,544 -80,1160 -44,615 -83,1180 -86,1254 l -6,135 129,100 128,101 102,329 102,330 11,235 c 6,129 14,263 17,298 l 6,62 h -54 c -40,0 -100,15 -236,62 l -183,63 v 52 53 h 63 c 34,0 94,-6 132,-13 77,-15 150,-4 165,23 4,8 16,72 25,143 l 18,127 h 44 44 l -7,228 c -4,125 -10,259 -13,297 l -6,70 -145,72 c -80,39 -158,74 -175,77 l -30,4 -73,-511 c -40,-282 -72,-523 -72,-536 0,-24 -1,-24 -77,-18 -43,3 -167,22 -277,41 -109,20 -200,36 -202,36 -2,0 -4,25 -4,55 v 55 l 183,2 182,3 12,65 c 70,383 105,636 114,840 6,118 9,253 7,299 l -3,83 -178,93 c -144,75 -195,96 -260,109 -45,9 -85,16 -89,16 -5,0 -8,-33 -8,-72 0,-63 -41,-1066 -54,-1308 -4,-88 -34,-180 -59,-180 -7,0 -133,-9 -282,-20 -148,-11 -298,-20 -332,-20 h -63 v 53 54 l 258,67 c 141,38 258,69 259,70 1,1 16,179 33,396 28,365 30,425 28,794 -2,256 -7,400 -13,401 -5,1 -95,-7 -200,-18 z M 2104,4590 c 134,-93 247,-170 251,-170 4,0 108,36 230,80 179,64 233,80 279,80 h 56 v -52 l -1,-53 -216,-140 c -120,-78 -219,-149 -223,-160 -6,-17 -38,-215 -98,-602 l -15,-103 h -57 -57 l -7,113 c -20,336 -37,585 -42,612 -4,25 -47,64 -245,224 l -239,195 v 48 c 0,28 7,59 16,73 14,21 24,25 70,25 53,0 56,-1 298,-170 z"
+       id="path4"
+       inkscape:connector-curvature="0" />
+    <path
+       d="m 1273,6944 -221,-106 -5,-42 c -2,-22 -22,-157 -43,-299 -20,-141 -35,-259 -33,-261 3,-3 121,13 264,34 143,22 282,40 308,40 33,0 58,7 78,21 l 29,20 v 350 349 h -78 -77 z"
+       id="path6"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>

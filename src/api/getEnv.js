@@ -1,0 +1,34 @@
+import {Storage} from '@google-cloud/storage'
+import dotenv from 'dotenv'
+import fs from 'fs'
+
+const getEnv = () => {
+  return new Promise((resolve, reject) => {
+    if (fs.existsSync('.env')) {
+      // running locally or I pushed secrets to github :D
+      dotenv.config()
+      resolve()
+      return
+    }
+
+    const {GOOGLE_CLOUD_PROJECT: projectId} = process.env
+    const bucketName = `${projectId}.appspot.com`
+    new Storage({projectId})
+      .bucket(bucketName)
+      .file('.env')
+      .download()
+      .then((data) => {
+        const config = dotenv.parse(data)
+        process.env = {
+          ...process.env,
+          ...config,
+        }
+        resolve()
+      })
+      .catch((err) => {
+        reject(err)
+      })
+  })
+}
+
+export default getEnv

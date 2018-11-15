@@ -1,0 +1,49 @@
+1	"Strength"
+5	"Wisdom"
+3	"Constitution"
+2	"Dexterity"
+4	"Intelligence"
+6	"Charisma"
+
+1	"Cleric"	8
+2	"Druid"	8
+3	"Bard"	8
+4	"Barbarian"	8
+5	"Fighter"	8
+6	"Monk"	8
+7	"Paladin"	8
+8	"Ranger"	8
+9	"Rogue"	8
+10	"Sorcerer"	8
+11	"Warlock"	8
+12	"Wizard"	8
+
+1	"Dwarf"	25
+2	"Elf"	30
+3	"Halfling"	25
+4	"Human"	30
+5	"Dragonborn"	30
+6	"Gnome"	30
+7	"Half-Orc"	30
+8	"Tiefling"	30
+9	"Tabaxi"	30
+10	"Half-Elf"	30
+
+1	"Acrobatics"	2
+2	"Animal Handling"	5
+3	"Arcana"	4
+4	"Athletics"	1
+5	"Deception"	6
+6	"History"	4
+8	"Intimidation"	6
+7	"Insight"	5
+9	"Investigation"	4
+10	"Medicine"	5
+12	"Perception"	5
+11	"Nature"	4
+14	"Persuasion"	6
+13	"Performance"	6
+15	"Religion"	4
+16	"Sleight of Hand"	2
+17	"Stealth"	2
+18	"Survival"	5
