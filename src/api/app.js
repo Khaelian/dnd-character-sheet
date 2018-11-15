@@ -6,6 +6,7 @@ import routes from './routes'
 
 // misc
 import chalk from 'chalk'
+import path from 'path'
 
 // custom
 import {connectToDb} from './orm'
@@ -25,10 +26,10 @@ app.use(cors())
 
 app.use('/api', routes)
 
-app.use('/static', express.static('build'))
 app.use(express.static('build'))
 app.use('*', (req, res) => {
-  res.sendFile('/build/index.html')
+  const indexLocation = path.join(process.cwd(), './build/index.html')
+  res.sendFile(indexLocation)
 })
 
 app.listen(port, () => {
