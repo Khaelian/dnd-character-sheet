@@ -35,6 +35,7 @@ export const connectToDb = () => {
   // const entities = fs.readdirSync(entityDirectory)
   //   .filter((fileName) => /.+\.js/i.test(fileName))
   //   .map((fileName) => require(path.join(entityDirectory, fileName)))
+  
   console.log('Configuring DB Connection')
   createConnection({
     type: DB_DRIVER,
