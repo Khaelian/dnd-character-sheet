@@ -7,7 +7,8 @@ const app = Router()
 
 app.get('/', async (req, res) => {
   try {
-    const characters = await getConnection()
+    const conn = await getConnection()
+    const characters = await conn
       .getRepository(Character)
       .find({active: true})
     res.json(characters)
