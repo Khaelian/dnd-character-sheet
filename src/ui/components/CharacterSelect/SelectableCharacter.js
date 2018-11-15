@@ -47,7 +47,6 @@ const styles = theme => ({
 class SelectableCharacter extends Component {
   render () {
     const {
-      id,
       data,
       classes,
     } = this.props
@@ -64,7 +63,7 @@ class SelectableCharacter extends Component {
     )
 
     return (
-      <Link className={classes.row} to={`/character/${id}`}>
+      <Link className={classes.row} to={`/character/${data.id}`}>
         {characterImage}
         <Typography
           color="inherit"

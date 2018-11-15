@@ -8,6 +8,7 @@ const getEnv = () => {
       // running locally or I pushed secrets to github :D
       // it's funny, because in the same commit where I pushed the previous line, I also committed .env.old to git...
       console.log('Secrets loaded locally')
+      // process.env.APP_ENV = 'local'
       dotenv.config()
       resolve()
       return

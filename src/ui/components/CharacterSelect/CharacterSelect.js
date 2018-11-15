@@ -41,7 +41,6 @@ class CharacterSelect extends Component {
       axios.get('http://localhost:8080/api/character')
         .then((res) => {
           const {data} = res
-          console.log(data)
           this.setState({
             characters: data,
             error: null,
@@ -91,9 +90,12 @@ class CharacterSelect extends Component {
         </div>
       )
     } else {
-      content = Object.keys(characterData).map((id) => {
-        console.log(characterData[id])
-        return <SelectableCharacter id={id} data={characterData[id]} />
+      console.log({
+        characterData,
+      })
+      content = Object.keys(characterData).map((index) => {
+        const character = characterData[index]
+        return <SelectableCharacter key={character.id} data={character} />
       })
     }
 

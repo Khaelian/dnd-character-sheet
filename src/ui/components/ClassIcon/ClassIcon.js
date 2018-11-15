@@ -122,7 +122,6 @@ Object.keys(classes).map((className) => {
       ...props,
       viewBox: '0 0 24 24',
     }
-    console.log(props)
     return (
       <SvgIcon {..._props}>
         {classes[className].svgPath}
