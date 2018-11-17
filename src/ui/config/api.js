@@ -1,5 +1,7 @@
-export const api = {
+const api = {
   googleSignIn: 'https://accounts.google.com/o/oauth2/v2/auth',
-  userProfile: 'https://www.googleapis.com/oauth2/v1/userinfo',
-  clientId: '922017572988-fu735uoltk3r4alphbtu7lq0g1hog15t.apps.googleusercontent.com',
+  clientId: '415556891643-c82vsbkf8dur3dqf1u9jl622qc6l9bie.apps.googleusercontent.com',
+  dnd: /localhost/i.test(window.location.hostname) ? 'http://localhost:8080/api' : '/api',
 }
+
+export default api

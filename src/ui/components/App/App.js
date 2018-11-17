@@ -14,7 +14,9 @@ import Layout from '../Layout/Layout'
 import HomePage from '../HomePage/HomePage'
 import CharacterSelect from '../CharacterSelect/CharacterSelect'
 import Character from '../Character/Character'
-
+import AuthWall from '../Auth/AuthWall'
+import Interceptor from './Interceptor';
+import NewCharacter from '../NewCharacter/NewCharacter'
 
 class App extends Component {
   
@@ -22,15 +24,19 @@ class App extends Component {
   render() {
     return (
       <AppState>
+        <Interceptor />
         <MuiThemeProvider theme={theme}>
           <Typography color="inherit">
-          <Router>
-            <Layout>
-              <Switch>
-                <Route exact path="/" component={HomePage} />
-                <Route path="/character_select" component={CharacterSelect} />
-                <Route path="/character/:characterId?" component={Character} />
-              </Switch>
+            <Router>
+              <Layout>
+                <AuthWall>
+                  <Switch>
+                    <Route exact path="/" component={HomePage} />
+                    <Route path="/character_select" component={CharacterSelect} />
+                    <Route path="/character/new" component={NewCharacter} />
+                    <Route path="/character/:characterId?" component={Character} />
+                  </Switch>
+                </AuthWall>
               </Layout>
             </Router>
           </Typography>

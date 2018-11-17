@@ -3,6 +3,7 @@ import {createConnection, getConnection as nativeGetConnection} from 'typeorm'
 // import path from 'path'
 
 import Character from './Entities/Character'
+import User from './Entities/User'
 
 const checkDb = (resolve) => {
     if (process.env.dbAvailable) {
@@ -21,42 +22,47 @@ export const getConnection = async () => {
 }
 
 export const connectToDb = () => {
-  const {
-    DB_DRIVER,
-    DB_HOST,
-    DB_PORT,
-    DB_VOLUME,
-    DB_USERNAME,
-    DB_PASSWORD,
-    APP_ENV,
-  } = process.env
+  return new Promise((resolve, reject) => {
+    const {
+      DB_DRIVER,
+      DB_HOST,
+      DB_PORT,
+      DB_VOLUME,
+      DB_USERNAME,
+      DB_PASSWORD,
+      APP_ENV,
+    } = process.env
 
-  // const entityDirectory = path.join(__dirname, './Entities')
+    // const entityDirectory = path.join(__dirname, './Entities')
 
-  // const entities = fs.readdirSync(entityDirectory)
-  //   .filter((fileName) => /.+\.js/i.test(fileName))
-  //   .map((fileName) => require(path.join(entityDirectory, fileName)))
+    // const entities = fs.readdirSync(entityDirectory)
+    //   .filter((fileName) => /.+\.js/i.test(fileName))
+    //   .map((fileName) => require(path.join(entityDirectory, fileName)))
 
-  const isLocal = (APP_ENV === 'local')
+    const isLocal = (APP_ENV === 'local')
 
-  console.log('Configuring DB Connection')
-  createConnection({
-    type: DB_DRIVER,
-    host: DB_HOST,
-    port: DB_PORT,
-    username: DB_USERNAME,
-    password: DB_PASSWORD,
-    database: DB_VOLUME,
-    entities: [
-      Character,
-    ],
-    // bad stuff for production
-    dropSchema: isLocal,
-    synchronize: isLocal,
-    logging: true,
-  }).then(() => {
-    process.env.dbAvailable = true
-  }).catch((err) => {
-    console.log('Error connecting to database:', err)
+    console.log('Configuring DB Connection')
+    createConnection({
+      type: DB_DRIVER,
+      host: DB_HOST,
+      port: DB_PORT,
+      username: DB_USERNAME,
+      password: DB_PASSWORD,
+      database: DB_VOLUME,
+      entities: [
+        Character,
+        User,
+      ],
+      // bad stuff for production
+      dropSchema: isLocal,
+      synchronize: isLocal,
+      logging: true,
+    }).then(() => {
+      process.env.dbAvailable = true
+      resolve()
+    }).catch((err) => {
+      console.log('Error connecting to database:', err)
+      reject()
+    })
   })
 }

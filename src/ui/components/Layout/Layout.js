@@ -7,6 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Drawer from '@material-ui/core/Drawer'
 import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
 // import IconButton from '@material-ui/core/IconButton'
 // import MenuOpenIcon from '@material-ui/icons/Menu'
 // import MenuCloseIcon from '@material-ui/icons/KeyboardArrowLeft'
@@ -43,12 +44,21 @@ const styles = theme => ({
   spacer: {
     marginLeft: drawerWidth + theme.spacing.large,
   },
+  toolbar: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  grow: {
+    flexGrow: 1,
+  }
 })
 
 class Layout extends Component {
   state = {
     menuOpen: false,
   }
+
+  signOut = () => this.props.setAuth(null)
 
   toggleMenuOpen = () => this.setState(({menuOpen}) => ({menuOpen: !menuOpen}))
 
@@ -57,6 +67,7 @@ class Layout extends Component {
       classes,
       children,
       appTitle,
+      auth,
     } = this.props
     
     const {
@@ -80,7 +91,7 @@ class Layout extends Component {
           position="static"
           className={menuOpen ? classes.appBarWithDrawerExtended : null}
         >
-          <Toolbar>
+          <Toolbar className={classes.toolbar}>
             {/* <IconButton
               color="inherit"
               onClick={this.toggleMenuOpen}
@@ -91,6 +102,13 @@ class Layout extends Component {
               }
             </IconButton> */}
             <Typography color="inherit" variant="title">Saturday Night Naturals</Typography>
+            <div className={classes.grow} />
+            {auth &&
+              <Button
+                variant="raised"
+                onClick={this.signOut}
+              >Sign Out</Button>
+            }
           </Toolbar>
         </AppBar>
         <Paper className={[classes.content, (menuOpen && classes.spacer)].join(' ')}>

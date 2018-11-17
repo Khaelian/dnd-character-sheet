@@ -49,15 +49,16 @@ class SelectableCharacter extends Component {
     const {
       data,
       classes,
+      hideClassText,
     } = this.props
     const {
       characterClass,
       name,
-      image,
+      imageUrl,
     } = data
 
-    const characterImage = image ? (
-      <Avatar className={classes.avatar} src={image} />
+    const characterImage = imageUrl ? (
+      <Avatar className={classes.avatar} src={imageUrl} />
     ) : (
       <Avatar className={classes.avatar}><ClassIcon className={classes.classIcon} class={characterClass} /></Avatar>
     )
@@ -75,7 +76,7 @@ class SelectableCharacter extends Component {
           color="inherit"
           variant="subtitle1"
         >
-          {characterClass}
+          {hideClassText || characterClass}
         </Typography>
       </Link>
     )

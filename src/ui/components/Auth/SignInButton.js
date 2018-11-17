@@ -2,46 +2,52 @@ import React, { Component } from 'react'
 
 // material-ui
 import Button from '@material-ui/core/Button'
+import {withStyles} from '@material-ui/core/styles'
 
 // misc
 import queryString from 'query-string'
 
 // custom
-import context from '../App/appContext'
-import api from '../../utils/api'
+import PageTitle from '../App/PageTitle'
+import api from '../../config/api'
+
+const styles = theme => ({
+  button: {
+    margin: 20,
+  }
+})
 
 class SignInButton extends Component {
-  signInWindow = () => {
+  handleClick = () => {
     const queryParams = {
       client_id: api.clientId,
       redirect_uri: `${window.location.origin}/auth/login`,
-      response_type: 'token',
       scope: 'profile email',
+      access_type: 'offline',
+      response_type: 'code',
       include_granted_scopes: true,
     }
-    
     const url = `${api.googleSignIn}?${queryString.stringify(queryParams)}`
     const windowProps = 'height=800,width=600'
     window.open(url, '_blank', windowProps)
   }
 
-  componentDidMount = () => {
-    
-  }
-
   render () {
+    const {classes} = this.props
     return (
-      <div>
+      <React.Fragment>
+        <PageTitle />
         <Button
-          onClick={this.signInWindow}
           variant="raised"
           color="primary"
-        >
-          Sign In
+          className={classes.button}
+          onClick={this.handleClick}
+          >
+          Google Sign-In
         </Button>
-      </div>
+      </React.Fragment>
     )
   }
 }
 
-export default SignInButton
+export default withStyles(styles)(SignInButton)

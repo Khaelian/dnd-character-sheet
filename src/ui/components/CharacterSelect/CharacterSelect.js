@@ -6,11 +6,13 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 
 // custom
 import {useContext} from '../App/AppState'
+import api from '../../config/api'
 
 // misc
 import axios from 'axios'
 import PageTitle from '../App/PageTitle';
 import SelectableCharacter from './SelectableCharacter';
+import NewCharacterButton from '../NewCharacter/NewCharacterButton';
 
 const styles = theme => ({
   container: {
@@ -38,7 +40,7 @@ class CharacterSelect extends Component {
       error: null,
       characters: null,
     }, () => {
-      axios.get('http://localhost:8080/api/character')
+      axios.get(`${api.dnd}/character`)
         .then((res) => {
           const {data} = res
           this.setState({
@@ -90,13 +92,11 @@ class CharacterSelect extends Component {
         </div>
       )
     } else {
-      console.log({
-        characterData,
-      })
       content = Object.keys(characterData).map((index) => {
         const character = characterData[index]
         return <SelectableCharacter key={character.id} data={character} />
       })
+      content = [<NewCharacterButton />, ...content]
     }
 
     return (
