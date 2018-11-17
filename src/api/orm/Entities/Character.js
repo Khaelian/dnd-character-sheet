@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm'
-import {Required, Requirable} from '../DBUtils'
+import {Required, DBEntity} from '../DBUtils'
 
 @Entity()
-class Character extends Requirable {
+class Character extends DBEntity {
   constructor(props) {
-    super(props)
+    super()
     // need to check if props exist because TypeORM makes empty objects while spinning up
     if (props) Object.keys(props).forEach((key) => this[key] = props[key])
   }
@@ -17,7 +17,14 @@ class Character extends Requirable {
 
   @Required
   @Column({type: 'text'})
+  playerId = undefined
+
+  @Required
+  @Column({type: 'text'})
   characterClass = undefined
+
+  @Column({type: 'text', nullable: true})
+  imageUrl = undefined
 
   @Column({type: 'timestamp with time zone', default: () => `(now() at time zone 'utc')`})
   created = undefined

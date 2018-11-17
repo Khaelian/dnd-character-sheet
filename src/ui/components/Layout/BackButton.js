@@ -19,8 +19,8 @@ const styles = theme => ({
 })
 
 const BackButton = ({classes}) => {
-  const isCharacterSelect = window.location.pathname === '/character_select'
-  if (isCharacterSelect) return null
+  // const isCharacterSelect = window.location.pathname === '/character_select'
+  // if (isCharacterSelect) return null
   return (
     <Link className={classes.main} to="/">
       <Tooltip

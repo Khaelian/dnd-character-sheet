@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import useContext from './appContext'
+import {useContext} from './AppState'
 
 class PageTitle extends Component {
   setPageTitle = () => {

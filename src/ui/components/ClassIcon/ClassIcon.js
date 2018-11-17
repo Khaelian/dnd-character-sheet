@@ -1,7 +1,7 @@
 import React from 'react'
 import SvgIcon from '@material-ui/core/SvgIcon'
 
-var classes = {
+export const classes = {
   'Barbarian': {
     svgPath: (
       <g transform="translate(0,-290.65)">
@@ -131,7 +131,17 @@ Object.keys(classes).map((className) => {
 })
 
 const ClassIcon = ({class: characterClass, ...props}) => {
-  return classes[characterClass].icon(props)
+  const pick = classes[characterClass]
+  if (pick) return pick.icon(props)
+  return (props) => {
+    const _props = {
+      ...props,
+      viewBox: '0 0 24 24',
+    }
+    return (
+      <SvgIcon {..._props} />
+    )
+  }
 }
 
 export default ClassIcon

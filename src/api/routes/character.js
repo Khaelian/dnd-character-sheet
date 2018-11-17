@@ -2,15 +2,24 @@ import {Router} from 'express'
 import {getConnection} from '../orm'
 import Character from '../orm/Entities/Character'
 import {hasMissingParameters} from '../orm/DBUtils'
+import auth from '../authMiddleware'
 
 const app = Router()
 
+app.use(auth)
+
 app.get('/', async (req, res) => {
+  const {
+    sub: playerId,
+  } = req.user
   try {
     const conn = await getConnection()
     const characters = await conn
       .getRepository(Character)
-      .find({active: true})
+      .find({
+        active: true,
+        playerId,
+      })
     res.json(characters)
   } catch (err) {
     const errorMessage = 'Error fetching characters from DB'
@@ -20,17 +29,21 @@ app.get('/', async (req, res) => {
 })
 
 app.get('/:characterId', async (req, res) => {
-  const {characterId} = req.params
+  const {characterId: id} = req.params
+  const {
+    sub: playerId,
+  } = req.user
   try {
     const conn = await getConnection()
     const character = await conn
       .getRepository(Character)
       .findOne({
         active: true,
-        id: characterId,
+        id,
+        playerId,
       })
     if (character) res.json(character)
-    else res.status(404).send(`No character found by id '${characterId}'`)
+    else res.status(404).send(`No character found by id '${id}'`)
   } catch (err) {
     const errorMessage = 'Error fetching character from DB'
     console.log(errorMessage, err)
@@ -40,8 +53,16 @@ app.get('/:characterId', async (req, res) => {
 
 app.post('/', async (req, res) => {
   const characterProps = req.body
+
+  const {
+    sub: playerId,
+  } = req.user
+
   try {
-    const newCharacter = new Character(characterProps)
+    const newCharacter = new Character({
+      ...characterProps,
+      playerId,
+    })
     if (hasMissingParameters(res, newCharacter)) return
     const conn = await getConnection()
     const dbCharacter = await conn

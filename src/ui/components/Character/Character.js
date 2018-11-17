@@ -9,6 +9,7 @@ import PageTitle from '../App/PageTitle';
 // misc
 import axios from 'axios'
 import {get} from 'lodash'
+import api from '../../config/api';
 
 const _ = {get}
 
@@ -31,7 +32,7 @@ class Character extends Component {
       error: null,
       data: null,
     }, () => {
-      axios.get(`http://localhost:8080/api/character/${characterId}`)
+      axios.get(`${api.dnd}/character/${characterId}`)
         .then((res) => {
           this.setState({
             error: null,
@@ -64,6 +65,8 @@ class Character extends Component {
     if (loading) {
       return <PageTitle title="Loading" />
     }
+
+    // todo return character not found
 
     return (
       <div>

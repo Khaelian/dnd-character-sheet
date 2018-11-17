@@ -4,7 +4,7 @@ export const Required = (target, key, descriptor) => {
   return descriptor
 }
 
-export class Requirable {
+export class DBEntity {
   missingParameters = () => {
     var missingParams = []
     if (this._requiredProps) {
