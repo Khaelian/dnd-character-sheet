@@ -13,16 +13,18 @@ class LoginSuccess extends Component {
   componentDidMount = () => {
     var auth = queryString.parse(window.location.search)
     
+    // TODO make the failure flow better
     axios.post(`${api.dnd}/auth`, auth)
       .then((res) => {
         const {data} = res
         localStorage.setItem('google-auth', JSON.stringify(data))
+        window.close()
       })
       .catch((err) => {
         console.log('err', err.message)
       })
       .finally(() => {
-        window.close()
+        
       })
   }
   render () {

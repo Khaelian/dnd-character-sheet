@@ -8,10 +8,12 @@ const oauthValues = () => {
   const {
     GCP_OAUTH_CLIENT_ID: client_id,
     GCP_OAUTH_SECRET: client_secret,
+    APP_ENV,
   } = process.env
   return {
     client_id,
     client_secret,
+    APP_ENV,
   }
 }
 
@@ -22,12 +24,12 @@ app.post('/', async (req, res) => {
   } = req.body
 
   try {
-    const {client_id, client_secret} = oauthValues()
+    const {client_id, client_secret, APP_ENV} = oauthValues()
     const {data} = await axios.post('https://www.googleapis.com/oauth2/v4/token', {
       code,
       client_id,
       client_secret,
-      redirect_uri: 'http://localhost:3000/auth/login',
+      redirect_uri: APP_ENV === 'local' ? 'http://localhost:3000/auth/login' : 'https://saturdaynightnaturals.appspot.com/auth/login',
       grant_type: 'authorization_code',
     })
 
