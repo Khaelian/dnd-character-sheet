@@ -18,9 +18,7 @@ import {Redirect, Link} from 'react-router-dom'
 // custom
 import api from '../../config/api'
 import PageTitle from '../App/PageTitle'
-import ClassIcon, {classes as classObj} from '../ClassIcon/ClassIcon'
-
-const characterClassOptions = Object.keys(classObj)
+import CharacterClass from './CharacterClass'
 
 const styles = theme => ({
   container: {
@@ -41,7 +39,12 @@ const styles = theme => ({
   avatar: {
     height: 60,
     width: 60,
-  }
+  },
+  actionContainer: {
+    display: 'flex',
+    justifyContent: 'center !important',
+    paddingTop: `${theme.spacing.large}px !important`,
+  },
 })
 
 
@@ -62,7 +65,7 @@ class NewCharacter extends Component {
     })
   }
 
-  handleChangeCharacterClass = (e) => this.setState({characterClass: e.target.value})
+  handleChangeCharacterClass = (characterClass) => this.setState({characterClass})
   handleChangeCharacterImage = (e) => this.setState({imageUrl: e.target.value})
 
   handleCreate = () => {
@@ -71,10 +74,9 @@ class NewCharacter extends Component {
     }, () => {
       const {
         name,
-        characterClass: classIndex,
+        characterClass,
         imageUrl,
       } = this.state
-      const characterClass = characterClassOptions[classIndex]
       axios.post(`${api.dnd}/character`, {
         name,
         characterClass,
@@ -119,9 +121,9 @@ class NewCharacter extends Component {
       <div className={classes.container}>
         <PageTitle title="New Character" />
         <div>
-          <Avatar className={classes.avatar} src={imageUrl}>
+          {/* <Avatar className={classes.avatar} src={imageUrl}>
             {Boolean(imageUrl) || <ClassIcon class={characterClassOptions[characterClass]} />}
-          </Avatar>
+          </Avatar> */}
         </div>
         <div>
           <TextField
@@ -132,26 +134,7 @@ class NewCharacter extends Component {
             onChange={this.handleChangeCharacterName}
           />
         </div>
-        <div>
-          <FormControl fullWidth>
-            <InputLabel
-              htmlFor="character-class"
-              required
-            >
-              Class
-            </InputLabel>
-            <Select
-              inputProps={{id: 'character-class'}}
-              fullWidth
-              onChange={this.handleChangeCharacterClass}
-              value={characterClass}
-            >
-              {characterClassOptions.map((className, index) =>
-                <MenuItem key={className} value={index}>{className}</MenuItem>
-              )}
-            </Select>
-          </FormControl>
-        </div>
+        <CharacterClass characterClass={characterClass} onChange={this.handleChangeCharacterClass} />
         <div>
           <TextField
             fullWidth
@@ -160,19 +143,21 @@ class NewCharacter extends Component {
             onChange={this.handleChangeCharacterImage}
           />
         </div>
-        <Button
-          variant="raised"
-          color="primary"
-          disabled={name.length < 3 || characterClass === null}
-          onClick={this.handleCreate}
-        >
-          Create
-        </Button>
-        <Link to="/">
-          <Button>
-            Cancel
+        <div className={classes.actionContainer}>
+          <Link to="/">
+            <Button>
+              Cancel
+            </Button>
+          </Link>
+          <Button
+            variant="raised"
+            color="primary"
+            disabled={name.length < 3 || characterClass === null}
+            onClick={this.handleCreate}
+          >
+            Create
           </Button>
-        </Link>
+        </div>
       </div>
     )
   }
