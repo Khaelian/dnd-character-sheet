@@ -2,8 +2,11 @@ import {Router} from 'express'
 import {getConnection} from '../orm'
 import Character from '../orm/Entities/Character'
 import {hasMissingParameters} from '../orm/DBUtils'
+import auth from '../authMiddleware'
 
 const app = Router()
+
+app.use(auth)
 
 app.get('/', async (req, res) => {
   const {
