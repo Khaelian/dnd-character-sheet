@@ -9,27 +9,19 @@ import theme from '../../config/muiTheme'
 import Typography from '@material-ui/core/Typography'
 
 // custom
-import {ContextProvider} from './appContext'
+import AppState from './AppState'
 import Layout from '../Layout/Layout'
 import HomePage from '../HomePage/HomePage'
 import CharacterSelect from '../CharacterSelect/CharacterSelect'
 import Character from '../Character/Character'
 
-const initialState = {
-  appTitle: 'Saturday Night Naturals',
-}
 
 class App extends Component {
-  setAppTitle = (appTitle) => this.setState({appTitle})
-
-  state = {
-    ...initialState,
-    setAppTitle: this.setAppTitle,
-  }
+  
 
   render() {
     return (
-      <ContextProvider value={this.state}>
+      <AppState>
         <MuiThemeProvider theme={theme}>
           <Typography color="inherit">
           <Router>
@@ -43,7 +35,7 @@ class App extends Component {
             </Router>
           </Typography>
         </MuiThemeProvider>
-      </ContextProvider>
+      </AppState>
     );
   }
 }

@@ -5,7 +5,7 @@ import {withStyles} from '@material-ui/core/styles'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 // custom
-import useContext from '../App/appContext'
+import {useContext} from '../App/AppState'
 
 // misc
 import axios from 'axios'

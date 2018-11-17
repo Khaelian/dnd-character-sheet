@@ -14,7 +14,7 @@ import Paper from '@material-ui/core/Paper'
 // custom
 import BackButton from './BackButton'
 
-import useContext from '../App/appContext'
+import {useContext} from '../App/AppState'
 
 const drawerWidth = 250
 
