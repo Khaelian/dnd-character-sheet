@@ -114,7 +114,7 @@ class NewCharacter extends Component {
       return <CircularProgress />
     }
 
-    console.log(characterClass)
+    // TODO fix avatar sizing
     return (
       <div className={classes.container}>
         <PageTitle title="New Character" />

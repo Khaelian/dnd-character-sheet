@@ -39,7 +39,8 @@ export const connectToDb = () => {
     //   .filter((fileName) => /.+\.js/i.test(fileName))
     //   .map((fileName) => require(path.join(entityDirectory, fileName)))
 
-    const isLocal = (APP_ENV === 'local')
+    // const isLocal = (APP_ENV === 'local')
+    const isLocal = false
 
     console.log('Configuring DB Connection')
     createConnection({
@@ -56,7 +57,7 @@ export const connectToDb = () => {
       // bad stuff for production
       dropSchema: isLocal,
       synchronize: isLocal,
-      logging: true,
+      logging: isLocal,
     }).then(() => {
       process.env.dbAvailable = true
       resolve()

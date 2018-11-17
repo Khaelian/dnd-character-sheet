@@ -1,29 +1,45 @@
 import React, { Component } from 'react'
-import SelectableCharacter from '../CharacterSelect/SelectableCharacter';
 
+// custom
+import SelectableCharacter from '../CharacterSelect/SelectableCharacter'
 import {classes as classObj} from '../ClassIcon/ClassIcon'
 
 const classes = Object.keys(classObj)
 
 class NewCharacterButton extends Component {
   state = {
+    rotateInterval: 50,
     activeClassIndex: 0,
   }
 
+  pickRandomClass = () => {
+    console.log(this.state.rotateInterval)
+    this.setState(({activeClassIndex}) => {
+      var newIndex
+      do {
+        newIndex = Math.floor(Math.random() * classes.length)
+      } while (newIndex === activeClassIndex)
+      return {activeClassIndex: newIndex}
+    })
+    this.swapTimeout = setTimeout(this.pickRandomClass, this.state.rotateInterval)
+  }
+
+  slowClassRotation = () => {
+    this.setState(({rotateInterval}) => ({
+      rotateInterval: rotateInterval + 5
+    }), () => {
+      if (this.state.rotateInterval >= 5000) clearInterval(this.slowInterval)
+    })
+  }
+
   componentDidMount = () => {
-    this.swapInterval = setInterval(() => {
-      this.setState(({activeClassIndex}) => {
-        var newIndex
-        do {
-          newIndex = Math.floor(Math.random() * classes.length)
-        } while (newIndex === activeClassIndex)
-        return {activeClassIndex: newIndex}
-      })
-    }, 500)
+    this.pickRandomClass()
+    this.slowInterval = setInterval(this.slowClassRotation, 100)
   }
 
   componentWillUnmount = () => {
-    clearInterval(this.swapInterval)
+    clearTimeout(this.swapTimeout)
+    clearInterval(this.slowInterval)
   }
 
   render () {
